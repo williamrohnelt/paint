@@ -1,0 +1,84 @@
+Estrutura do Documento
+<!DOCTYPE html>
+
+O que é: Esta é a declaração do tipo de documento.
+
+Detalhe: Ela deve ser a primeira linha de qualquer documento HTML. Informa ao navegador que o documento é escrito em HTML5, garantindo que ele seja renderizado corretamente (modo padrão).
+
+<html lang="en">
+
+O que é: Esta é a tag raiz do documento HTML.
+
+Detalhe: Todo o conteúdo do documento (exceto a declaração <!DOCTYPE html>) fica aninhado dentro desta tag. O atributo lang="en" define a linguagem principal do documento como Inglês ("en"), o que pode ajudar mecanismos de busca e tecnologias assistivas.
+
+Seção de Metadados (<head>)
+<head>
+
+O que é: Esta seção contém metadados sobre o documento HTML.
+
+Detalhe: O conteúdo dentro de <head> não é exibido diretamente na página web, mas fornece informações essenciais sobre ela, como o título, a codificação de caracteres e links para folhas de estilo.
+
+<meta charset="UTF-8">
+
+O que é: Define o conjunto de caracteres para o documento.
+
+Detalhe: O valor "UTF-8" é o conjunto de caracteres recomendado e mais comum, pois suporta quase todos os caracteres do mundo, incluindo acentuações e caracteres especiais.
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+O que é: Uma meta tag crucial para o design responsivo.
+
+Detalhe:
+
+name="viewport": Indica que a tag se aplica à área de visualização do usuário.
+
+content="width=device-width": Define a largura da área de visualização para ser igual à largura da tela do dispositivo (ex: em um celular, a largura é a do celular).
+
+initial-scale=1.0: Define o nível de zoom inicial quando a página é carregada pela primeira vez, que é 100% ou "sem zoom".
+
+<link rel="stylesheet" href="./style.css">
+
+O que é: Linka um arquivo de Folha de Estilo em Cascata (CSS) externo.
+
+Detalhe:
+
+rel="stylesheet": Indica que o recurso lincado é uma folha de estilo.
+
+href="./style.css": Especifica o caminho (./ indica o mesmo diretório) para o arquivo CSS chamado style.css, que contém as regras de estilo e design da página.
+
+<title>Paint</title>
+
+O que é: Define o título do documento.
+
+Detalhe: O texto "Paint" é o que aparece na aba do navegador ou na lista de favoritos. É importante para a SEO (Otimização para Mecanismos de Busca).
+
+</head>
+
+O que é: Fecha a seção de metadados.
+
+Conteúdo Visível (<body>)
+<body>
+
+O que é: Esta seção contém todo o conteúdo visível da página web.
+
+Detalhe: Elementos como texto, imagens, links, vídeos, e outros elementos estruturais estarão aninhados aqui. Neste caso, ela está vazia de elementos de conteúdo visível.
+
+<script src="./script.js"></script>
+
+O que é: Linka um arquivo de JavaScript externo.
+
+Detalhe:
+
+src="./script.js": Especifica o caminho para o arquivo JavaScript chamado script.js, que contém a lógica interativa (como desenhar, cores, etc.) da aplicação "Paint".
+
+O script é colocado no final do <body> para garantir que o HTML seja totalmente carregado e processado pelo navegador antes que o script tente interagir com ele.
+
+</body>
+
+O que é: Fecha a seção de conteúdo visível.
+
+</html>
+
+O que é: Fecha a tag raiz, indicando o fim do documento HTML.
+
+Em resumo, este código é a estrutura básica para uma aplicação web chamada "Paint", que carrega seus estilos de style.css e sua funcionalidade interativa de script.js.
