@@ -12,13 +12,21 @@ let isPainting = false;
 
 let activeTool = "brush";
 
+let lastX = 0;
+
+let lastY = 0;
+
 inputColor.addEventListener("change", ({ target }) => {
+    ctx.strokeStyle = target.value;
     ctx.fillStyle = target.value;
 });
 
 canvas.addEventListener("mousedown", ({ clientX, clientY }) => {
     isPainting = true;
 
+    lastX = clientX - canvas.offsetLeft;
+    lastY = clientY - canvas.offsetTop;
+    /*
     if (activeTool === "brush") {
         draw(clientX, clientY);
     }
@@ -26,6 +34,7 @@ canvas.addEventListener("mousedown", ({ clientX, clientY }) => {
     if (activeTool === "rubber") {
         erase(clientX, clientY);
     }
+    */
 });
 
 canvas.addEventListener("mousemove", ({ clientX, clientY }) => {
@@ -45,8 +54,25 @@ canvas.addEventListener("mouseup", ({ clientX, clientY }) => {
 });
 
 const draw = (x, y) => {
+    const currentX = x - canvas.offsetLeft;
+    const currentY = y - canvas.offsetTop;
+
     ctx.globalCompositeOperation = "source-over";
     ctx.beginPath();
+
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(currentX, currentY);
+
+    ctx.lineWidth = brushSize;
+
+    ctx.lineCap = "round";
+
+    ctx.stroke();
+
+    lastX = currentX;
+    lastY = currentY;
+
+    /*
     ctx.arc(
         x - canvas.offsetLeft,
         y - canvas.offsetTop, 
@@ -55,11 +81,26 @@ const draw = (x, y) => {
         2 * Math.PI
     );
     ctx.fill();
+    */
 }
 
 const erase = (x, y) => {
+    const currentX = x - canvas.offsetLeft;
+    const currentY = y - canvas.offsetTop;
+
     ctx.globalCompositeOperation = "destination-out";
     ctx.beginPath();
+
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(currentX, currentY);
+    
+    ctx.lineWidth = brushSize;
+    ctx.lineCap = "round";
+    ctx.stroke();
+
+    lastX = currentX;
+    lastY = currentY;
+    /*
     ctx.arc(
         x - canvas.offsetLeft,
         y - canvas.offsetTop, 
@@ -68,6 +109,7 @@ const erase = (x, y) => {
         2 * Math.PI
     );
     ctx.fill();
+    */
 }
 
 const selectTool = ({ target }) => {
